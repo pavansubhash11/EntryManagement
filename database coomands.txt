@@ -1,0 +1,58 @@
+create table
+
+
+
+
+host 
+id
+name
+email
+phone
+CREATE TABLE host(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL, phone TEXT UNIQUE NOT NULL)
+
+x = c.execute("insert into host(name,email,phone) values('Charan', 'charan@gmail.com', '123')")
+
+
+
+visitor
+id
+email
+phone
+name
+CREATE TABLE visitor(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL, phone TEXT UNIQUE NOT NULL)
+
+
+visitor entry details
+id
+visitorid
+hostid
+entry_allowed
+check_in_time
+check_out_time
+
+CREATE TABLE visitor_entry_details(id INTEGER PRIMARY KEY AUTOINCREMENT, visitor_id INTEGER NOT NULL, host_id INTEGER NOT NULL, entry_allowed BOOLEAN NOT NULL, check_in_time TEXT, check_out_time TEXT, FOREIGN KEY(visitor_id) REFERENCES visitor(id), FOREIGN KEY(host_id) REFERENCES host(id))
+
+
+SELECT datetime('now');
+FOREIGN KEY (visitor_id) REFERENCES visitor(id) 
+
+c.execute("SELECT name FROM sqlite_master WHERE type='table';")
+
+PRAGMA table_info('Users')
+
+
+db = 'entryManagement.db'
+import sqlite3 as sql
+conn =  sql.connect(db)
+c = conn.cursor()
+c.execute("SELECT name FROM sqlite_master WHERE type='table';")
+rows = c.fetchall()
+for i in rows: print(i)
+c.commit()
+c.close()
+conn.close()
+
+
+from bookmanager import db
+db.create_all()
+exit()

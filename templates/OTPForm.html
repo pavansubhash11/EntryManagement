@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <br><br>
+  <h1 style = "text-align: center;">Innovaccer Inc.</h1>
+  <br><br>
+  
+  {% if message %}
+    <div class="alert alert-warning">
+      <strong>{{message}}</strong>
+    </div>
+  {% endif %}
+
+
+  <h3>Validate OTP (One Time Password)</h3>
+  <p>A One Time Password has been sent to : <strong>{{visitor_email}}</strong> </p>
+  Please enter the OTP to verify your Email Address. If you can't see an email from <strong>Innovaccer</strong> in your inbox, make sure to check your SPAM folder.
+  <br><br>If you still cannot see a email, <a href="/resendotp/{{visitor_email}}"> Resend otp</a>
+  <br><br>
+  <form action="/getdetails"  method="POST">
+         
+    <div class="form-group">
+      <label for="auth_otp">OTP:</label>
+      <input type="text" class="form-control" id="auth_otp" placeholder="Enter your otp" name="auth_otp" required>
+    </div>
+
+    <input type="hidden" class="form-control" value="{{visitor_email}}" id="visitor_email"  name="visitor_email" required>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
+
+</body>
+</html>
